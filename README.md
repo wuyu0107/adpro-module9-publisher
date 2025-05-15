@@ -13,3 +13,6 @@ The URL specifies the protocol (`amqp`), username and password(`guest:guest`), a
 ![](images/subscriber.png)
 
 When I run `cargo run` in the publisher, it connects to the RabbitMQ message broker and publishes five `UserCreatedEventMEssage` instances to the `user_created` queue, each containing unique user information. On the subscriber side, it connects to the same broker and sets it up to listen for messages on that same queue. As soon as the events are published, subscriber receives them in real time and outputs the details of each message to the console. 
+
+![](images/spikes.png)
+The graphs shows spikes as the message rates per minutes. The purple line represents the subscriber acknowledging the message receipt while yellow line represents publisher sending messages. In the first spike, i ran `cargo run` one time and `cargo run` two times in the second spike, resulting in the higher peak in the second spike. 
